@@ -1,8 +1,3 @@
-/* Ye 3 lines Tailwind ke "core" hain.
-   @tailwind base    -> browser defaults reset karta hai
-   @tailwind components -> reusable component classes ke liye
-   @tailwind utilities -> wo saari classes jo hum use karte hain
-                          (bg-black, text-white, flex, etc) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

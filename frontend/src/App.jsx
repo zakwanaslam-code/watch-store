@@ -6,6 +6,11 @@ import ProductGrid from "./components/ProductGrid.jsx";
 import Footer from "./components/Footer.jsx";
 import ProductDetail from "./components/ProductDetail.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import CartPage from "./components/CartPage.jsx";
+import AdminPanel from "./components/AdminPanel.jsx";
+import AdminLogin from "./components/AdminLogin.jsx";
+import SpotlightSection from "./components/SpotlightSection.jsx";
+
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,10 +30,14 @@ function App() {
             <>
               <HeroSection />
               <ProductGrid searchTerm={searchTerm} />
+                 <SpotlightSection />
             </>
           }
         />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
       </Routes>
 
       <Footer />

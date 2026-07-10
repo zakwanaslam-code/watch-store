@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function ProductCard({ product }) {
   return (
-    <Link to={`/product/${product.id}`}>
+    <Link to={`/product/${product._id}`}>
       <div className="relative border border-gray-200 rounded-xl p-5 hover:shadow-xl transition-shadow duration-300 bg-white">
         
         {/* Discount badge - sirf tab dikhega jab product.discount maujood ho */}

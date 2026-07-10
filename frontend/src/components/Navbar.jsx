@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext.jsx";
 
 const menuItems = [
   {
@@ -21,6 +23,9 @@ const menuItems = [
 
 export default function Navbar({ searchTerm, setSearchTerm }) {
   const [openMenu, setOpenMenu] = useState(null);
+  // Naya state - mobile menu khula hai ya band
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cartCount } = useCart();
 
   return (
     <div className="sticky top-0 z-50">
@@ -28,13 +33,14 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
         Free Insured Shipping Worldwide &nbsp;•&nbsp; Authenticated by Experts
       </div>
 
-      <nav className="flex items-center justify-between px-10 py-6 bg-neutral-100 border-b border-gray-300">
+      <nav className="flex items-center justify-between px-5 md:px-10 py-4 md:py-6 bg-neutral-100 border-b border-gray-300">
         
-        <div className="text-3xl font-serif font-bold tracking-wider text-gray-900">
+        <div className="text-2xl md:text-3xl font-serif font-bold tracking-wider text-gray-900">
           USA <span className="text-orange-400">LUXURY</span>
         </div>
 
-        <ul className="flex gap-10 text-gray-800 text-[13px] font-semibold tracking-widest uppercase">
+        {/* Desktop menu - chhoti screen pe hide (hidden lg:flex) */}
+        <ul className="hidden lg:flex gap-10 text-gray-800 text-[13px] font-semibold tracking-widest uppercase">
           {menuItems.map((item) => (
             <li
               key={item.label}
@@ -75,7 +81,8 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
           </li>
         </ul>
 
-        <div className="flex items-center gap-6">
+        {/* Desktop right side - chhoti screen pe hide */}
+        <div className="hidden lg:flex items-center gap-6">
           <input
             type="text"
             placeholder="Search watches..."
@@ -84,11 +91,76 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
             className="border-b border-gray-400 px-1 py-1.5 text-sm w-40 focus:outline-none focus:border-orange-400 transition-colors bg-transparent"
           />
 
+          <Link to="/admin-login" className="text-sm font-medium text-gray-600 hover:text-orange-400 transition-colors">
+            Admin
+          </Link>
+
+          <Link to="/cart" className="relative">
+            <span className="text-sm font-medium">🛒 Cart</span>
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-3 bg-orange-400 text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
           <button className="bg-black text-white text-xs font-semibold tracking-widest uppercase px-7 py-3 transition-all duration-300 hover:bg-orange-400 hover:text-black">
             Contact Us
           </button>
         </div>
+
+        {/* Mobile - Cart icon + Hamburger, sirf chhoti screen pe dikhega */}
+        <div className="flex lg:hidden items-center gap-4">
+          <Link to="/cart" className="relative">
+            <span className="text-xl">🛒</span>
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-orange-400 text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-2xl"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </nav>
+
+      {/* MOBILE MENU - sirf tab dikhega jab mobileMenuOpen true ho */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-gray-200 px-5 py-4 space-y-4">
+          <input
+            type="text"
+            placeholder="Search watches..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full border rounded px-4 py-2 text-sm"
+          />
+
+          <ul className="space-y-3 text-gray-800 text-sm font-medium">
+            {menuItems.map((item) => (
+              <li key={item.label} className="border-b border-gray-100 pb-3">
+                {item.label}
+              </li>
+            ))}
+            <li className="border-b border-gray-100 pb-3">Blog</li>
+            <li className="border-b border-gray-100 pb-3">Support</li>
+            <li>
+              <Link to="/admin-login" onClick={() => setMobileMenuOpen(false)}>
+                Admin
+              </Link>
+            </li>
+          </ul>
+
+          <button className="w-full bg-black text-white text-sm font-semibold uppercase py-3">
+            Contact Us
+          </button>
+        </div>
+      )}
     </div>
   );
 }
