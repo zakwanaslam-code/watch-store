@@ -2,24 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext.jsx";
 
-const menuItems = [
-  {
-    label: "Watches",
-    options: ["Rolex", "Patek Philippe", "Audemars Piguet", "All Watches"],
-  },
-  {
-    label: "Jewelry",
-    options: ["Rings", "Necklaces", "Bracelets"],
-  },
-  {
-    label: "Services",
-    options: ["Repair", "Authentication", "Appraisal"],
-  },
-  {
-    label: "Sell or Trade",
-    options: ["Sell Your Watch", "Trade-In"],
-  },
-];
+const menuItems = [ ];
+
 
 export default function Navbar({ searchTerm, setSearchTerm }) {
   const [openMenu, setOpenMenu] = useState(null);
@@ -35,9 +19,14 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
 
       <nav className="flex items-center justify-between px-5 md:px-10 py-4 md:py-6 bg-neutral-100 border-b border-gray-300">
         
-        <div className="text-2xl md:text-3xl font-serif font-bold tracking-wider text-gray-900">
-          USA <span className="text-orange-400">LUXURY</span>
-        </div>
+       <div className="cursor-pointer">
+  <h1 className="text-3xl md:text-4xl font-black tracking-[0.18em] text-gray-900 leading-none">
+    VELORA
+   </h1>
+    <p className="text-[10px] tracking-[0.5em] uppercase text-orange-500 font-semibold mt-1">
+     LUXE
+     </p>
+     </div> 
 
         {/* Desktop menu - chhoti screen pe hide (hidden lg:flex) */}
         <ul className="hidden lg:flex gap-10 text-gray-800 text-[13px] font-semibold tracking-widest uppercase">
@@ -104,9 +93,17 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
             )}
           </Link>
 
-          <button className="bg-black text-white text-xs font-semibold tracking-widest uppercase px-7 py-3 transition-all duration-300 hover:bg-orange-400 hover:text-black">
-            Contact Us
-          </button>
+          <button
+  onClick={() =>
+    window.open(
+      "https://wa.me/923464453012?text=Hello%20VELORA%20LUXE",
+      "_blank"
+    )
+  }
+  className="bg-green-600 text-white text-xs font-bold tracking-widest uppercase px-7 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300"
+>
+  WhatsApp Us
+</button>
         </div>
 
         {/* Mobile - Cart icon + Hamburger, sirf chhoti screen pe dikhega */}
@@ -156,9 +153,17 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
             </li>
           </ul>
 
-          <button className="w-full bg-black text-white text-sm font-semibold uppercase py-3">
-            Contact Us
-          </button>
+      <button
+     onClick={() =>
+      window.open(
+      "https://wa.me/03464453012",
+       "_blank"
+    )
+  }
+  className="bg-green-600 text-white text-xs font-bold tracking-widest uppercase px-7 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300"
+>
+  WhatsApp Us
+</button>
         </div>
       )}
     </div>

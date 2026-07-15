@@ -11,14 +11,11 @@ import AdminPanel from "./components/AdminPanel.jsx";
 import AdminLogin from "./components/AdminLogin.jsx";
 import SpotlightSection from "./components/SpotlightSection.jsx";
 
-
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <div>
-      {/* Routes se BAHAR, lekin Router ke ANDAR hona zaroori hai
-          taake ye har route change ko "sun" sake */}
       <ScrollToTop />
 
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -30,7 +27,7 @@ function App() {
             <>
               <HeroSection />
               <ProductGrid searchTerm={searchTerm} />
-                 <SpotlightSection />
+              <SpotlightSection />
             </>
           }
         />

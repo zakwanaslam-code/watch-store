@@ -1,11 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-// Context banaya - ye ek "khaali container" hai abhi
+// Context banaya
 const CartContext = createContext();
 
-// Provider - ye component poori app ko cart data
-// "supply" karega. Jo bhi iske andar hoga, wo
-// cart access kar sakega
+ 
 export function CartProvider({ children }) {
   // cartItems = array of products jo add kiye gaye
   const [cartItems, setCartItems] = useState([]);

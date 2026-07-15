@@ -4,6 +4,25 @@ import { useCart } from "../context/CartContext.jsx";
 export default function CartPage() {
   const { cartItems, removeFromCart, cartTotal } = useCart();
 
+  const handleWhatsAppCheckout = () => {
+  const phone = "923464453012"; //  Apna WhatsApp number yahan likho
+
+  let message = `*Hello VELORA LUXE!*%0A%0A`;
+  message += `I would like to place an order.%0A%0A`;
+  message += `*Order Details:*%0A`;
+
+  cartItems.forEach((item) => {
+    message += `• ${item.name}%0A`;
+    message += `  Quantity: ${item.quantity}%0A`;
+    message += `  Price: $${item.price.toLocaleString()}%0A%0A`;
+  });
+
+  message += `*Total:* $${cartTotal.toLocaleString()}%0A%0A`;
+  message += `Please confirm my order. Thank you!`;
+
+  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+};
+
   // Agar cart khaali hai
   if (cartItems.length === 0) {
     return (
@@ -58,9 +77,12 @@ export default function CartPage() {
         <p className="text-xl font-bold">
           Total: ${cartTotal.toLocaleString()}
         </p>
-        <button className="bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-orange-400 hover:text-black transition">
-          Checkout
-        </button>
+       <button
+       onClick={handleWhatsAppCheckout}
+      className="bg-green-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-green-700 transition"
+       >
+  Checkout via WhatsApp
+</button>
       </div>
     </section>
   );
