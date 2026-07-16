@@ -5,6 +5,8 @@ import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import dns from "dns";
 import authRoutes from "./routes/authRoutes.js";
+import sellRoutes from "./routes/sellRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
 
 
 dotenv.config();
@@ -29,6 +31,10 @@ app.get("/", (req, res) => {
 // Jo bhi URL "/api/products" se shuru ho, use productRoutes
 // file handle karegi
 app.use("/api/products", productRoutes);
+
+app.use("/api/sell", sellRoutes);
+
+app.use("/api/posts", postRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

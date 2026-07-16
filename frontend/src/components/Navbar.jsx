@@ -62,12 +62,12 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
               )}
             </li>
           ))}
-          <li className="cursor-pointer py-2 hover:text-orange-400 transition-colors">
-            Blog
-          </li>
-          <li className="cursor-pointer py-2 hover:text-orange-400 transition-colors">
-            Support
-          </li>
+          <Link to="/blog" className="cursor-pointer py-2 hover:text-orange-400 transition-colors">
+             Blog
+           </Link>
+          <Link to="/support" className="cursor-pointer py-2 hover:text-orange-400 transition-colors">
+              Support
+          </Link>
         </ul>
 
         {/* Desktop right side - chhoti screen pe hide */}

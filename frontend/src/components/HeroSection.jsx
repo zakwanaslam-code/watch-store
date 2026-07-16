@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import watchHero from "../assets/watch-hero.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
   const [textVisible, setTextVisible] = useState(false);
   const [imageVisible, setImageVisible] = useState(false);
   const textRef = useRef(null);
   const imageRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const textObserver = new IntersectionObserver(
@@ -96,9 +98,13 @@ export default function HeroSection() {
               Buy Watches 
             </button>
 
-            <button className="border border-gray-500 text-white font-semibold px-6 py-3 rounded transition-all duration-300 hover:scale-105 hover:border-orange-400 hover:text-orange-400 active:scale-95">
-              Sell your Watches 
+            <button
+              onClick={() => navigate("/sell")}
+              className="border border-gray-500 text-white font-semibold px-6 py-3 rounded transition-all duration-300 hover:scale-105 hover:border-orange-400 hover:text-orange-400 active:scale-95"
+>
+              Sell your Watches ↗
             </button>
+            
           </div>
 
           <div

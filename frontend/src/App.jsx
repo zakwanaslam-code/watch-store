@@ -10,6 +10,17 @@ import CartPage from "./components/CartPage.jsx";
 import AdminPanel from "./components/AdminPanel.jsx";
 import AdminLogin from "./components/AdminLogin.jsx";
 import SpotlightSection from "./components/SpotlightSection.jsx";
+import SellWatchPage from "./components/SellWatchPage.jsx";
+import BlogPage from "./components/BlogPage.jsx";
+import BlogDetail from "./components/BlogDetail.jsx";
+import TrendingSection from "./components/TrendingSection.jsx";
+import NewArrivalsSection from "./components/NewArrivalsSection.jsx";
+import FloatingNewArrivalsButton from "./components/FloatingNewArrivalsButton.jsx";
+import TrustBadgesSection from "./components/TrustBadgesSection.jsx";
+import FloatingBestSellingButton from "./components/FloatingBestSellingButton.jsx";
+import SupportPage from "./components/SupportPage.jsx";
+
+
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,8 +37,12 @@ function App() {
           element={
             <>
               <HeroSection />
+          
               <ProductGrid searchTerm={searchTerm} />
+              <NewArrivalsSection />
               <SpotlightSection />
+              <TrendingSection />
+               
             </>
           }
         />
@@ -35,8 +50,15 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/sell" element={<SellWatchPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/support" element={<SupportPage />} />
       </Routes>
 
+         <TrustBadgesSection />
+      <FloatingNewArrivalsButton />
+      <FloatingBestSellingButton />
       <Footer />
     </div>
   );

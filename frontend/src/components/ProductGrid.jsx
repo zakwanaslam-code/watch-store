@@ -44,8 +44,8 @@ export default function ProductGrid({ searchTerm }) {
 
   return (
     <section ref={sectionRef} className="max-w-7xl mx-auto px-8 py-16">
-      <h2 className="text-3xl font-bold mb-2">Featured Watches</h2>
-      <p className="text-gray-500 mb-10">
+      <h2 className="text-3xl font-bold mb-2 text-center">Featured Watches</h2>
+      <p className="text-gray-500 mb-10 text-center">
         Handpicked timepieces, authenticated and ready to ship.
       </p>
 
@@ -55,7 +55,7 @@ export default function ProductGrid({ searchTerm }) {
 
       {!loading && !error && (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {filteredProducts.map((product, index) => (
               <div
                 key={product._id}
