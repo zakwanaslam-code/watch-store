@@ -20,6 +20,8 @@ export default {
         "slide-side": "slide-side 2.5s ease-in-out infinite",
         "bounce-slow": "bounce-slow 2s ease-in-out infinite",
       },
+
+      
     },
   },
   plugins: [],

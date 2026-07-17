@@ -65,11 +65,14 @@ export default function SpotlightSection() {
             onClick={handleShopClick}
             className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl ring-1 ring-orange-400/30 cursor-pointer"
           >
-            <img
-              src="http://localhost:5000/images/omega-seamaster.jpg"
-              alt="omega-seamaster"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-            />
+           <video
+  src="http://localhost:5000/videos/1vv2.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  className="w-full h-full object-cover hover:scale-120 transition-transform duration-500"
+/>
 
             <span className="absolute top-5 left-5 bg-red-500 text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-lg shadow-red-500/50">
               -15% OFF

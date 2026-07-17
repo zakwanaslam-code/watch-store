@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext.jsx";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const menuItems = [ ];
 
@@ -13,24 +15,22 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
 
   return (
     <div className="sticky top-0 z-50">
-      <div className="bg-black text-gray-300 text-[11px] tracking-widest uppercase text-center py-2">
-        Free Insured Shipping Worldwide &nbsp;•&nbsp; Authenticated by Experts
+<div className="bg-[#050505] text-[#D4AF37] text-[11px] tracking-[0.18em] uppercase text-center py-2 border-b border-[#8B6A2B]">        
+  Free Insured Shipping Worldwide &nbsp;•&nbsp; Authenticated by Experts
       </div>
 
-      <nav className="flex items-center justify-between px-5 md:px-10 py-4 md:py-6 bg-neutral-100 border-b border-gray-300">
-        
-       <div className="cursor-pointer">
-  <h1 className="text-3xl md:text-4xl font-black tracking-[0.18em] text-gray-900 leading-none">
+<nav className="flex items-center justify-between px-6 lg:px-12 py-3 bg-[#0B0B0B] border-b-2 border-[#8B6A2B] shadow-[0_2px_0_0_#8B6A2B]">   
+      <div className="cursor-pointer">
+  <h1 className="text-3xl md:text-[2rem] font-black tracking-[0.28em] text-white leading-none">
     VELORA
    </h1>
-    <p className="text-[10px] tracking-[0.5em] uppercase text-orange-500 font-semibold mt-1">
+    <p className="text-[10px] tracking-[0.5em] uppercase text-[#D4AF37] font-semibold mt-1">
      LUXE
      </p>
      </div> 
 
         {/* Desktop menu - chhoti screen pe hide (hidden lg:flex) */}
-        <ul className="hidden lg:flex gap-10 text-gray-800 text-[13px] font-semibold tracking-widest uppercase">
-          {menuItems.map((item) => (
+        <ul className="hidden lg:flex items-center gap-10 text-white text-[13px] font-semibold tracking-[0.18em] uppercase">          {menuItems.map((item) => (
             <li
               key={item.label}
               className="relative cursor-pointer py-2"
@@ -62,25 +62,24 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
               )}
             </li>
           ))}
-          <Link to="/blog" className="cursor-pointer py-2 hover:text-orange-400 transition-colors">
+          <Link to="/blog" className="cursor-pointer py-2 text-white hover:text-[#D4AF37] transition-all duration-300">
              Blog
            </Link>
-          <Link to="/support" className="cursor-pointer py-2 hover:text-orange-400 transition-colors">
+          <Link to="/support" className="cursor-pointer py-2 text-white hover:text-[#D4AF37] transition-all duration-300">
               Support
           </Link>
         </ul>
 
         {/* Desktop right side - chhoti screen pe hide */}
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-8">
           <input
             type="text"
             placeholder="Search watches..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="border-b border-gray-400 px-1 py-1.5 text-sm w-40 focus:outline-none focus:border-orange-400 transition-colors bg-transparent"
-          />
+            className="border-b border-[#C9A14A] px-2 py-1 text-sm w-48 bg-transparent focus:outline-none"          />
 
-          <Link to="/admin-login" className="text-sm font-medium text-gray-600 hover:text-orange-400 transition-colors">
+          <Link to="/admin-login" className="text-sm font-semibold text-white hover:text-[#D4AF37] transition-all">
             Admin
           </Link>
 
@@ -93,16 +92,21 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
             )}
           </Link>
 
-          <button
+          <Link to="/login" className="text-sm font-semibold text-white hover:text-[#D4AF37] transition-all">
+          Login
+          </Link>
+
+<button
   onClick={() =>
     window.open(
       "https://wa.me/923464453012?text=Hello%20VELORA%20LUXE",
       "_blank"
     )
   }
-  className="bg-green-600 text-white text-xs font-bold tracking-widest uppercase px-7 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300"
+  className="flex items-center gap-2 border-2 border-[#D4AF37] bg-transparent text-[#D4AF37] text-xs font-bold tracking-[0.18em] uppercase px-6 py-3 rounded-md hover:bg-[#D4AF37] hover:text-black transition-all duration-300"
 >
-  WhatsApp Us
+  <FaWhatsapp className="text-lg" />
+  <span>WhatsApp Us</span>
 </button>
         </div>
 
@@ -119,9 +123,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-2xl"
-            aria-label="Toggle menu"
-          >
+className="border border-[#D4AF37] bg-transparent text-[#D4AF37] text-xs font-bold tracking-[0.18em] uppercase px-6 py-3 rounded-sm hover:bg-[#D4AF37] hover:text-black transition-all duration-300"          >
             {mobileMenuOpen ? "✕" : "☰"}
           </button>
         </div>
@@ -152,17 +154,17 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
               </Link>
             </li>
           </ul>
-
-      <button
-     onClick={() =>
-      window.open(
-      "https://wa.me/03464453012",
-       "_blank"
+<button
+  onClick={() =>
+    window.open(
+      "https://wa.me/923464453012?text=Hello%20VELORA%20LUXE",
+      "_blank"
     )
   }
-  className="bg-green-600 text-white text-xs font-bold tracking-widest uppercase px-7 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300"
+  className="w-full flex items-center justify-center gap-2 border-2 border-[#D4AF37] bg-transparent text-[#D4AF37] text-xs font-bold tracking-[0.18em] uppercase px-6 py-3 rounded-md hover:bg-[#D4AF37] hover:text-black transition-all duration-300"
 >
-  WhatsApp Us
+  <FaWhatsapp className="text-lg" />
+  <span>WhatsApp Us</span>
 </button>
         </div>
       )}

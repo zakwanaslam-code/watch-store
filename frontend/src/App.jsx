@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import SignupPage from "./components/SignupPage.jsx";
+import LoginPage from "./components/LoginPage.jsx";
 import Navbar from "./components/Navbar.jsx";
 import HeroSection from "./components/HeroSection.jsx";
 import ProductGrid from "./components/ProductGrid.jsx";
@@ -46,6 +48,8 @@ function App() {
             </>
           }
         />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/admin" element={<AdminPanel />} />

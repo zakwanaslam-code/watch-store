@@ -11,8 +11,7 @@ export default function FloatingNewArrivalsButton() {
   return (
     <button
       onClick={scrollToNewArrivals}
-      className="fixed bottom-8 right-8 z-40 flex items-center gap-2 bg-gradient-to-r from-orange-400 to-orange-500 text-black text-sm font-bold px-5 py-3 rounded-full shadow-lg shadow-orange-500/40 hover:scale-105 transition-all duration-300 animate-bounce-slow"
-    >
+className="fixed bottom-8 right-8 z-40 bg-[#0B0B0B] border border-[#D4AF37] text-[#D4AF37] px-6 py-3 rounded-lg  text-base font-semibold shadow-[0_0_12px_rgba(212,175,55,0.15)] hover:bg-[#D4AF37] hover:text-black transition-all duration-300 animate-floating">    
       ✦ New Arrivals
     </button>
   );

@@ -1,12 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import watchHero from "../assets/watch-hero.jpg";
 import { useNavigate } from "react-router-dom";
+import { FiShoppingBag } from "react-icons/fi";
 
 export default function HeroSection() {
   const [textVisible, setTextVisible] = useState(false);
-  const [imageVisible, setImageVisible] = useState(false);
   const textRef = useRef(null);
-  const imageRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,168 +13,168 @@ export default function HeroSection() {
       { threshold: 0.3 }
     );
 
-    const imageObserver = new IntersectionObserver(
-      ([entry]) => setImageVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-
     if (textRef.current) textObserver.observe(textRef.current);
-    if (imageRef.current) imageObserver.observe(imageRef.current);
 
     return () => {
       if (textRef.current) textObserver.unobserve(textRef.current);
-      if (imageRef.current) imageObserver.unobserve(imageRef.current);
     };
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-black via-neutral-900 to-black min-h-[650px] overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
+    <section className="relative min-h-[650px] overflow-hidden">
+      {/* BACKGROUND VIDEO - poore section ko cover karti hai */}
+      <video
+        src="http://localhost:5000/videos/1vv3.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-      <div className="relative max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* LEFT SIDE - Text */}
-        <div ref={textRef}>
-          <p
-            className={`text-orange-400 text-xs font-bold tracking-[0.2em] uppercase mb-4 transition-all duration-700 ease-out ${
-              textVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-20"
-            }`}
-          >
-            ✦ Since 1998 — Trusted Worldwide
-          </p>
+     {/* DARK OVERLAY */}
+<div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/25" />
 
-          <h1
-            className={`text-white text-6xl font-bold mb-6 transition-all duration-700 ease-out ${
-              textVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-20"
-            }`}
-            style={{ transitionDelay: textVisible ? "100ms" : "0ms" }}
-          >
-            Buy &amp; Sell
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-500">
-              Luxury Watches
-            </span>
-          </h1>
+{/* Gold Glow Effects */}
+<div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-3xl" />
+<div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl" />
 
-          <p
-            className={`text-gray-300 text-sm mb-2 transition-all duration-700 ease-out ${
-              textVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-20"
-            }`}
-            style={{ transitionDelay: textVisible ? "250ms" : "0ms" }}
-          >
-            ROLEX, PATEK, AP &amp; MORE - AUTHENTICATED &amp; INSURED
-          </p>
+<div className="relative max-w-7xl mx-auto px-8 py-16">
+  <div ref={textRef} className="max-w-2xl">
 
-          <p
-            className={`text-gray-400 mb-8 max-w-md transition-all duration-700 ease-out ${
-              textVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-20"
-            }`}
-            style={{ transitionDelay: textVisible ? "400ms" : "0ms" }}
-          >
-            Shop with confidence. Every timepiece is thoroughly verified by
-            experts and protected for your peace of mind.
-          </p>
+    {/* Small Heading */}
+    <p
+      className={`text-[#D4AF37] uppercase tracking-[0.25em] text-sm font-semibold mb-5 transition-all duration-700 ease-out ${
+        textVisible
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-20"
+      }`}
+    >
+      ✦ Since 1998 — Trusted Worldwide
+    </p>
 
-          <div
-            className={`flex gap-4 mb-10 transition-all duration-700 ease-out ${
-              textVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-20"
-            }`}
-            style={{ transitionDelay: textVisible ? "550ms" : "0ms" }}
-          >
-            <button className="bg-gradient-to-r from-orange-400 to-orange-500 text-black font-semibold px-6 py-3 rounded shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-105 hover:shadow-orange-500/50 active:scale-95">
-              Buy Watches 
-            </button>
+    {/* Main Heading */}
+    <h1
+className={`text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-6 transition-all duration-700 ease-out ${        textVisible
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-20"
+      }`}
+      style={{ transitionDelay: textVisible ? "100ms" : "0ms" }}
+    >
+      Buy &amp; Sell
+      <br />
+      <span className="bg-gradient-to-r from-[#F8E08A] via-[#D4AF37] to-[#A97B22] bg-clip-text text-transparent">
+        Luxury Watches
+      </span>
+    </h1>
 
-            <button
-              onClick={() => navigate("/sell")}
-              className="border border-gray-500 text-white font-semibold px-6 py-3 rounded transition-all duration-300 hover:scale-105 hover:border-orange-400 hover:text-orange-400 active:scale-95"
->
-              Sell your Watches ↗
-            </button>
-            
-          </div>
+    {/* Gold Divider */}
+    <div
+      className={`w-24 h-[2px] bg-gradient-to-r from-[#D4AF37] to-transparent mb-6 transition-all duration-700 ${
+        textVisible
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-20"
+      }`}
+      style={{ transitionDelay: textVisible ? "180ms" : "0ms" }}
+    />
 
-          <div
-            className={`flex gap-8 border-t border-gray-800 pt-6 transition-all duration-700 ease-out ${
-              textVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-20"
-            }`}
-            style={{ transitionDelay: textVisible ? "700ms" : "0ms" }}
-          >
-            <div>
-              <p className="text-2xl font-bold text-white">10,000+</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wide">
-                Watches Sold
-              </p>
-            </div>
+    {/* Subtitle */}
+    <p
+      className={`text-[#D0D0D0] uppercase tracking-[0.15em] text-sm mb-3 transition-all duration-700 ease-out ${
+        textVisible
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-20"
+      }`}
+      style={{ transitionDelay: textVisible ? "250ms" : "0ms" }}
+    >
+      ROLEX • PATEK • AP &amp; MORE — AUTHENTICATED &amp; INSURED
+    </p>
 
-            <div>
-              <p className="text-2xl font-bold text-white">⭐ 4.9/5</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wide">
-                Customer Rating
-              </p>
-            </div>
+    {/* Description */}
+    <p
+      className={`text-gray-300 text-lg leading-8 max-w-xl mb-8 transition-all duration-700 ease-out ${
+        textVisible
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-20"
+      }`}
+      style={{ transitionDelay: textVisible ? "400ms" : "0ms" }}
+    >
+      Shop with confidence. Every timepiece is thoroughly verified by
+      experts and protected for your peace of mind.
+    </p>
+    {/* Buttons */}
+    <div
+      className={`flex flex-wrap gap-5 mb-12 transition-all duration-700 ease-out ${
+        textVisible
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-20"
+      }`}
+      style={{ transitionDelay: textVisible ? "550ms" : "0ms" }}
+    >
+      {/* Buy Button */}
+      <button className="flex items-center gap-2 px-8 py-4 rounded-md bg-gradient-to-r from-[#E6C35C] via-[#D4AF37] to-[#B8860B] text-black font-bold uppercase tracking-wider shadow-[0_0_25px_rgba(212,175,55,0.35)] hover:scale-105 hover:shadow-[0_0_35px_rgba(212,175,55,0.55)] transition-all duration-300">
+        <FiShoppingBag className="text-lg" />
+        Buy Watches
+      </button>
 
-            <div>
-              <p className="text-2xl font-bold text-white">25+ Yrs</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wide">
-                Industry Trust
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* Sell Button */}
+      <button
+        onClick={() => navigate("/sell")}
+        className="px-8 py-4 rounded-md border border-[#D4AF37] text-[#D4AF37] font-bold uppercase tracking-wider hover:bg-[#D4AF37] hover:text-black hover:scale-105 transition-all duration-300"
+      >
+        Sell Your Watches ↗
+      </button>
+    </div>
 
-        {/* RIGHT SIDE - Watch Image */}
-        <div
-          ref={imageRef}
-          className="relative w-full h-[550px] flex items-center justify-center overflow-visible"
-        >
-          <div className="absolute w-72 h-72 bg-orange-400/20 rounded-full blur-3xl" />
-
-          <img
-            src={watchHero}
-            alt="Luxury Watch"
-            className={`relative h-full w-auto object-contain transition-all duration-[2500ms] ease-out cursor-pointer hover:scale-105 ${
-              imageVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-20"
-            }`}
-          />
-
-          <div className="absolute top-10 left-10 border border-orange-400/50 bg-black/40 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded">
-            56mm Premium Steel
-          </div>
-
-          <div className="absolute top-1/3 left-0 border border-orange-400/50 bg-black/40 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded">
-            $7950.00
-          </div>
-
-          <div className="absolute bottom-20 right-10 border border-orange-400/50 bg-black/40 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded">
-            Premium Tropic Rubber Strap
-          </div>
-        </div>
+    {/* Stats */}
+    <div
+      className={`grid grid-cols-3 gap-8 border-t border-[#4B3A1E] pt-8 transition-all duration-700 ease-out ${
+        textVisible
+          ? "opacity-100 translate-x-0"
+          : "opacity-0 -translate-x-20"
+      }`}
+      style={{ transitionDelay: textVisible ? "700ms" : "0ms" }}
+    >
+      <div>
+        <p className="text-4xl font-black text-white">10,000+</p>
+        <p className="text-[#D4AF37] uppercase text-xs tracking-[0.15em] mt-2">
+          Watches Sold
+        </p>
       </div>
 
-      {/* HANGING TAG - Outside Grid (Center) */} 
-      <div className="absolute top-6 left-[40%] -translate-x-1/2 flex flex-col items-center animate-slide-side z-20">
-        <div className="w-px h-16 bg-gray-500" />
-
-        <div className="bg-gradient-to-br from-orange-400 to-orange-500 text-black text-sm font-bold px-5 py-2.5 rounded shadow-lg shadow-orange-500/40">
-          Shop Now ✦
-        </div>
+      <div>
+        <p className="text-4xl font-black text-white">
+          ⭐ <span className="text-[#D4AF37]">4.9/5</span>
+        </p>
+        <p className="text-[#D4AF37] uppercase text-xs tracking-[0.15em] mt-2">
+          Customer Rating
+        </p>
       </div>
-    </section>
+
+      <div>
+        <p className="text-4xl font-black text-white">25+ Yrs</p>
+        <p className="text-[#D4AF37] uppercase text-xs tracking-[0.10em] mt-2">
+          Industry Trust
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{/* Hanging Luxury Tag */}
+<div className="absolute top-0 right-20 flex flex-col items-center animate-slide-side z-20">
+  <div className="w-[2px] h-20 bg-gradient-to-b from-gray-300 to-[#D4AF37]" />
+
+  <div className="bg-[#0B0B0B] border border-[#D4AF37] text-[#D4AF37] px-7 py-3 rounded-md shadow-[0_0_25px_rgba(212,175,55,0.18)] backdrop-blur-md">
+    <div className="flex items-center gap-2 uppercase tracking-[0.18em] font-semibold text-sm">
+      <FiShoppingBag className="text-base" />
+      <span>Shop Now</span>
+      <span>✦</span>
+    </div>
+  </div>
+</div>
+
+</section>
   );
 }
